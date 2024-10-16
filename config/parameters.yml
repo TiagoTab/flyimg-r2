@@ -32,15 +32,19 @@ whitelist_domains:
   - domain-1.com
   - domain-2.com
 
-# Default storage system is local, to use AWS S3, change this param to s3
+# Default storage system is local, to use Cloudflare R2, change this param to s3
 storage_system: local
 
-# In case storage_system: s3, you need to add those AWS S3 parameters:
+# In case storage_system: s3, you need to add those Cloudflare R2 parameters:
 aws_s3:
   access_id: ''
   secret_key: ''
-  region: 'eu-central-1'
+  region: ''
   bucket_name: ''
+  endpoint: ''
+  bucket_path: ''
+  bucket_endpoint: true
+
 
 # Number of threads for Imagemagick to use
 thread: 1
