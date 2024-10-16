@@ -46,9 +46,10 @@ class S3StorageProvider implements ServiceProviderInterface
                 'key' => $s3Params['access_id'],
                 'secret' => $s3Params['secret_key'],
             ],
-            'region' => $s3Params['region'],
+            'region' => 'auto',
             'version' => 'latest',
             'endpoint' => $s3Params['endpoint'],
+            'bucket_endpoint' => false
         ];
 
         $app->register(
@@ -59,7 +60,8 @@ class S3StorageProvider implements ServiceProviderInterface
                         'adapter' => 'League\Flysystem\AwsS3V3\AwsS3V3Adapter',
                         'args' => [
                             new S3Client($clientParams),
-                            urlencode($s3Params['bucket_name']),
+                            $s3Params['bucket_name'],
+                            $s3Params['bucket_path']
                         ],
                     ],
                 ],
